@@ -30,9 +30,6 @@ county_list <- as.data.frame(county_list) %>%
 ui <- fluidPage(theme = shinytheme("flatly"),
                 titlePanel("Rent Distributions Across All Counties in the United States"),
   sidebarPanel(
-  textInput(inputId = "county",
-                 label = "Enter county name",
-            value = "San Juan"),
   selectizeInput(inputId = "state",
                  choices = state.name,
                  label = "Select state",
@@ -77,7 +74,7 @@ server <- function(input, output, session){
   })
   
   output$secondSelection <- renderUI({
-    selectizeInput(inputId = "county2",
+    selectizeInput(inputId = "county",
                    choices = county_final()$county,
                    label = "Select county",
                    selected = "San Juan")
